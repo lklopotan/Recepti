@@ -1,11 +1,21 @@
-<h1>Kreiraj novi recept</h1>
-
-<a routerLink="/create">Kreiraj!</a>
-
-
 <h1>Recepti:</h1>
 
-<div *ngFor="let recept of recepti">
-    <p>{{recept.Naziv}}</p>
-    <div>{{recept.Upute}}</div>
-</div>
+<a routerLink="/create">Kreiraj novi recept!</a>
+
+<div class="main">
+    <ul class="cards">
+      <li *ngFor="let recept of recepti" class="cards_item">
+        <div class="card">
+          <div class="card_image"><img [src]="'/assets/images/' + recept.Slika"></div>
+          <div class="card_content">
+            <h2 class="card_title">{{recept.Naziv}}</h2>
+            <p class="card_text">{{recept.Vrijeme}} min | 
+                <ng-container *ngFor="let _ of [].constructor(recept.Ocjena)">★</ng-container>
+                <ng-container *ngFor="let _ of [].constructor(5-recept.Ocjena)">☆</ng-container>
+            </p>
+            <button class="btn card_btn">Pročitaj recept</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>

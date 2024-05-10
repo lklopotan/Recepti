@@ -11,6 +11,7 @@ const receptSchema = new mongoose.Schema({
     Sastojci: [String], 
     Upute: String, 
     Savjet: String, 
+    Slika: String
 }, { collection: "Recepti", timestamps: true });
 
 const Recept = mongoose.model('Recept', receptSchema);

@@ -1,15 +1,55 @@
-<h1>Kreiraj recept:</h1>
-
-<div>
+<div class="login-box">
+    <h2>Novi recept</h2>
     <form>
-        <div>
-            <label for="Naslov">Naslov</label>
-            <input type="text" id="Naslov"/>
+        <div class="user-box">
+          <input type="text" name="Naziv" required="true">
+          <label>Naziv</label>
         </div>
-        <div>
-            <label for="Upute">Upute</label>
-            <input type="description" id="Upute"/>
+        <div class="user-box">
+          <input type="text" name="Vrsta" required="true">
+          <label>Vrsta</label>
         </div>
-        <button (click)="saveRecept()">Spremi recept</button>
+        <div class="user-box">
+          <input type="number" name="zaOsoba" min="1" max="10" required="true">
+          <label>Za osoba (1-10)</label>
+        </div>
+        <div class="user-box">
+          <input type="number" min="5" max="300" name="vrijeme" required="true">
+          <label>Vrijeme u minutama (5-300)</label>
+        </div>
+        <div class="user-box">
+          <input type="number" min="1" max="5" name="ocjena" required="true">
+          <label>Ocjena (1-5)</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="sastojciKategorije" required="true">
+          <label>Kategorije sastojaka</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="sastojci" required="true">
+          <label>Sastojci</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="upute" required="true">
+          <label>Upute</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="savjet" required="true">
+          <label>Savjet</label>
+        </div>
+      <a routerLink="/recepti" style="margin-right: 200px;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Odustani
+      </a>
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Spremi
+      </a>
     </form>
-</div>
+  </div>
