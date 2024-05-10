@@ -1,0 +1,11 @@
+<h1>Kreiraj novi recept</h1>
+
+<a routerLink="/create">Kreiraj!</a>
+
+
+<h1>Recepti:</h1>
+
+<div *ngFor="let recept of recepti">
+    <p>{{recept.Naziv}}</p>
+    <div>{{recept.Upute}}</div>
+</div>

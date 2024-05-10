@@ -8,10 +8,10 @@ const receptSchema = new mongoose.Schema({
     Vrijeme: Number, 
     Ocjena: Number, 
     SastojciKategorije: [String], 
-    Sastojci: String, 
+    Sastojci: [String], 
     Upute: String, 
     Savjet: String, 
-}, { collection: "Recepti" });
+}, { collection: "Recepti", timestamps: true });
 
 const Recept = mongoose.model('Recept', receptSchema);
 module.exports = Recept;
