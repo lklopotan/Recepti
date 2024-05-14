@@ -1,8 +1,9 @@
-<h1>Recepti:</h1>
+<h1 class="naslov">Recepti</h1>
 
 <a routerLink="/create">Kreiraj novi recept!</a>
 
 <div class="main">
+    <app-search-bar></app-search-bar>
     <ul class="cards">
       <li *ngFor="let recept of recepti" class="cards_item">
         <div class="card">
@@ -13,7 +14,7 @@
                 <ng-container *ngFor="let _ of [].constructor(recept.Ocjena)">★</ng-container>
                 <ng-container *ngFor="let _ of [].constructor(5-recept.Ocjena)">☆</ng-container>
             </p>
-            <button class="btn card_btn">Pročitaj recept</button>
+            <button class="btn card_btn" (click)="openRecept(recept)">Pročitaj recept</button>
           </div>
         </div>
       </li>

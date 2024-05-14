@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ReceptiService } from '../../services/recepti.service';
-import { Recept } from '../../models/recept';
+import { ReceptiService } from '../../../services/recepti.service';
+import { Recept } from '../../../models/recept';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 

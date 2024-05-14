@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RecipesListComponent } from './components/recipes-list/recipes-list.component';
+import { RecipesListComponent } from './components/pages/recipes-list/recipes-list.component';
 import { HttpClientModule } from "@angular/common/http"
 import { FormsModule } from '@angular/forms'
 
