@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.newRecipe {
+  text-align: center;
+}
+
 .naslov {
   font-weight: 400;
   font-size: 50px;
@@ -35,6 +39,7 @@ img {
 }
 
 .btn {
+  font-family: 'Kalam';
   color: #ffffff;
   padding: 0.8rem;
   font-size: 14px;

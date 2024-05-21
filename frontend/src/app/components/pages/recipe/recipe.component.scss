@@ -1,16 +1,3 @@
-html,
-body {
-  display: flex;
-  /*makes box movable around the  body*/
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  align-items: center; /*centers the item to center*/
-  min-height: 100vh;
-  background-color: hsl(30, 54%, 90%);
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
 .main-container {
   display: flex;
   margin-left: auto;
@@ -18,6 +5,10 @@ body {
   justify-content: center;
   align-items: center;
   padding: auto;
+  min-height: 100vh;
+  background-color: hsl(30, 54%, 90%);
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 .container {
   display: flex;
@@ -40,14 +31,12 @@ body {
   border-radius: 20px;
 }
 h1 {
-  font-family: "Young Serif", serif;
   font-size: 2.5em;
   font-weight: normal;
 }
 
 h2 {
   font-size: 2em;
-  font-family: "Young Serif", serif;
   font-weight: normal;
   color: hsl(14, 45%, 36%);
 }
@@ -130,16 +119,20 @@ table {
 }
 /*fonts*/
 .young-serif-regular {
-  font-family: "Young Serif", serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .outfit-400-600-700 {
-  font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400, 600, 700;
   font-style: normal;
+}
+
+.backButton {
+  position: absolute;
+  top: 50px;
+  left: 70px;
 }
 
 

@@ -1,0 +1,20 @@
+button {
+    font-family: 'Kalam';
+    background: rgb(239,141,156);
+    border: none;
+    color:#fff;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 0 0 2px #EF8D9C inset;
+    border-radius: 9px;
+    min-width: 80px;
+}
+
+button:hover {
+    background: rgba(83, 10, 10, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 5px #EF8D9C,
+                0 0 25px #EF8D9C,
+                0 0 50px #EF8D9C,
+                0 0 100px #EF8D9C;
+  }

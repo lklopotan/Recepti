@@ -1,55 +1,47 @@
 <div class="login-box">
     <h2>Novi recept</h2>
-    <form>
+    <form #receptForm="ngForm">
         <div class="user-box">
-          <input type="text" name="Naziv" required="true">
+          <input type="text" name="Naziv" required="true" ngModel>
           <label>Naziv</label>
         </div>
         <div class="user-box">
-          <input type="text" name="Vrsta" required="true">
+          <input type="text" name="Vrsta" required="true" ngModel>
           <label>Vrsta</label>
         </div>
         <div class="user-box">
-          <input type="number" name="zaOsoba" min="1" max="10" required="true">
+          <input type="number" name="zaOsoba" min="1" max="10" required="true" ngModel>
           <label>Za osoba (1-10)</label>
         </div>
         <div class="user-box">
-          <input type="number" min="5" max="300" name="vrijeme" required="true">
+          <input type="number" min="5" max="300" name="vrijeme" required="true" ngModel>
           <label>Vrijeme u minutama (5-300)</label>
         </div>
         <div class="user-box">
-          <input type="number" min="1" max="5" name="ocjena" required="true">
+          <input type="number" min="1" max="5" name="ocjena" required="true" ngModel>
           <label>Ocjena (1-5)</label>
         </div>
         <div class="user-box">
-          <input type="text" name="sastojciKategorije" required="true">
+          <input type="text" name="sastojciKategorije" required="true" ngModel>
           <label>Kategorije sastojaka</label>
         </div>
         <div class="user-box">
-          <input type="text" name="sastojci" required="true">
+          <input type="text" name="sastojci" required="true" ngModel>
           <label>Sastojci</label>
         </div>
         <div class="user-box">
-          <input type="text" name="upute" required="true">
+          <input type="text" name="upute" required="true" ngModel>
           <label>Upute</label>
         </div>
         <div class="user-box">
-          <input type="text" name="savjet" required="true">
+          <input type="text" name="savjet" required="true" ngModel>
           <label>Savjet</label>
         </div>
-      <a routerLink="/recepti" style="margin-right: 200px;">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Odustani
-      </a>
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Spremi
-      </a>
+        <div class="user-box">
+          <input type="file" name="slika" accept="image/*" required="false" (change)="onChangeImage($event)" ngModel>
+          <label>Slika</label>
+        </div>
+        <app-button class="natrag" (onClick)="navigateBack()" label="Odustani"></app-button>
+        <app-button class="backButton" (onClick)="saveRecept(receptForm.value)" label="Spremi"></app-button>
     </form>
   </div>

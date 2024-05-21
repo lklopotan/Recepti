@@ -1,64 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
-  <title>Simple Omelette Recipe</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap" rel="stylesheet">
+<div class="main-container">
+    <app-button class="backButton" (onClick)="navigateBack()" label="Natrag"></app-button>
 
-</head>
-
-<body>
-  <div class="main-container">
     <div class="container">
-      <div class="main-img">
+        <div class="main-img">
         <img [src]="'/assets/images/' + recept.Slika">
-      </div>
-      <div>
+        </div>
+        <div>
         <h1>{{recept.Naziv}}</h1>
-      </div>
-      <div class="preparation">
+        </div>
+        <div class="preparation">
         <ul class="time">
-          <li><span><strong>Vrsta: </strong>{{recept.Vrsta}}</span></li>
-          <li><span><strong>Vrijeme pripreme: </strong>{{recept.Vrijeme}} min</span></li>
-          <li><span><strong>Broj porcija: </strong></span>
+            <li><span><strong>Vrsta: </strong>{{recept.Vrsta}}</span></li>
+            <li><span><strong>Vrijeme pripreme: </strong>{{recept.Vrijeme}} min</span></li>
+            <li><span><strong>Broj porcija: </strong></span>
             <ng-container *ngFor="let _ of [].constructor(recept.ZaOsoba)">👤</ng-container>
-          </li>
-          <li><span><strong>Ocjena: </strong></span> 
+            </li>
+            <li><span><strong>Ocjena: </strong></span> 
             <ng-container *ngFor="let _ of [].constructor(recept.Ocjena)">★</ng-container>
             <ng-container *ngFor="let _ of [].constructor(5-recept.Ocjena)">☆</ng-container>
-          </li>
+            </li>
         </ul>
-      </div>
-      <div class="ingredients">
+        </div>
+        <div class="ingredients">
         <h2>Sastojci</h2>
         <ul class="items">
-          <li *ngFor="let sastojak of recept.Sastojci"><span>{{sastojak}}</span></li>
+            <li *ngFor="let sastojak of recept.Sastojci"><span>{{sastojak}}</span></li>
         </ul>
         <hr />
-      </div>
+        </div>
 
-      <div class="instruction">
-        <h2>Instructions</h2>
+        <div class="instruction">
+        <h2>Upute</h2>
         <ol class="steps">
             <p>{{recept.Upute}}</p>
         </ol>
         <hr />
-      </div>
+        </div>
 
-      <div *ngIf="recept.Savjet" class="nutrition">
+        <div *ngIf="recept.Savjet" class="nutrition">
         <h2>Savjet</h2>
         <p>{{recept.Savjet}}</p>
-      </div>
+        </div>
 
     </div>
-  </div>
-
-</body>
-
-</html>
+</div>

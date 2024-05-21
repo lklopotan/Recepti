@@ -18,4 +18,12 @@ export class ReceptiService {
   saveRecept(recept: Recept) {
     return this._httpClient.post(this.baseUrl, recept);
   }
+
+  saveReceptImage(receptId: string, image: File) {
+    const formData = new FormData();
+    formData.append('slika', image, image.name);
+    this._httpClient.post(this.baseUrl + "/" + receptId + "/image-upload", formData).subscribe(response => {
+      console.log(response);
+    })
+  }
 }
