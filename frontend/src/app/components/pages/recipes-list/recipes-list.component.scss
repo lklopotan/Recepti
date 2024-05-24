@@ -15,21 +15,12 @@
   font-size: 50px;
   font-style: normal;
   color: #EF8D9C;
-}
-
-html {
-  background-color: #ecf9ff;
+  text-align: center;
 }
 
 .main{
   max-width: 1200px;
   margin: 0 auto;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
 }
 
 img {
@@ -47,14 +38,17 @@ img {
   border-radius: 4px;
   font-weight: 400;
   display: block;
-  width: 100%;
+  width: 90%;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
+  position: absolute;
+  bottom: 10px;
 }
 
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.12);
+  transition: 0.5s;
 }
 
 .cards {
@@ -116,7 +110,7 @@ img {
   color: #ffffff;
   font-size: 0.875rem;
   line-height: 1.5;
-  margin-bottom: 1.25rem;    
+  margin-bottom: 4rem;    
   font-weight: 400;
 }
 

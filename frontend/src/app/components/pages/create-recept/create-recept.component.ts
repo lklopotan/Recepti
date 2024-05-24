@@ -78,6 +78,6 @@ export class CreateReceptComponent {
   }
 
   navigateBack() {
-    this._router.navigateByUrl('/recepti');
+    history.back();
   }
 }

@@ -1,7 +1,5 @@
 
 <div class="main-container">
-    <app-button class="backButton" (onClick)="navigateBack()" label="Natrag"></app-button>
-
     <div class="container">
         <div class="main-img">
         <img [src]="'http://localhost:3000/images/download/' + recept.Slika">
@@ -11,12 +9,12 @@
         </div>
         <div class="preparation">
         <ul class="time">
-            <li><span><strong>Vrsta: </strong>{{recept.Vrsta}}</span></li>
-            <li><span><strong>Vrijeme pripreme: </strong>{{recept.Vrijeme}} min</span></li>
-            <li><span><strong>Broj porcija: </strong></span>
+            <li><span><strong>Vrsta:  </strong>{{recept.Vrsta}}</span></li>
+            <li><span><strong>Vrijeme pripreme:  </strong>{{recept.Vrijeme}} min</span></li>
+            <li><span><strong>Broj porcija:  </strong></span>
             <ng-container *ngFor="let _ of [].constructor(recept.ZaOsoba)">👤</ng-container>
             </li>
-            <li><span><strong>Ocjena: </strong></span> 
+            <li><span><strong>Ocjena:   </strong></span> 
             <ng-container *ngFor="let _ of [].constructor(recept.Ocjena)">★</ng-container>
             <ng-container *ngFor="let _ of [].constructor(5-recept.Ocjena)">☆</ng-container>
             </li>
@@ -32,16 +30,15 @@
 
         <div class="instruction">
         <h2>Upute</h2>
-        <ol class="steps">
-            <p>{{recept.Upute}}</p>
-        </ol>
+        <p class="steps">{{recept.Upute}}</p>
         <hr />
         </div>
 
         <div *ngIf="recept.Savjet" class="nutrition">
         <h2>Savjet</h2>
-        <p>{{recept.Savjet}}</p>
+        <p class="steps">{{recept.Savjet}}</p>
         </div>
-
+        <app-button class="natrag" (onClick)="navigateBack()" label="Natrag"></app-button>
+        <app-button (onClick)="editRecept(recept)" label="Izmijeni"></app-button>
     </div>
 </div>

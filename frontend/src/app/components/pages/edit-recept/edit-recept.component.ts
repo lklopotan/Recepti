@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-recept',
@@ -20,7 +21,7 @@ export class EditReceptComponent {
   kategorijeSastojaka: { [key: string]: boolean } = {};
   public recept: Recept = new Recept();
 
-  constructor(private _formBuilder: FormBuilder, private _receptiService: ReceptiService, private _router: Router) {
+  constructor(private _formBuilder: FormBuilder, private _receptiService: ReceptiService, private _router: Router, private _location: Location) {
     this.recept = this._router.getCurrentNavigation()?.extras.state as Recept;
     this.recipeForm = this._formBuilder.group({
       Naziv: [this.recept.Naziv, Validators.required],
@@ -95,6 +96,6 @@ export class EditReceptComponent {
   }
 
   navigateBack() {
-    this._router.navigateByUrl('/recepti');
+    this._location.back();
   }
 }
