@@ -1,0 +1,76 @@
+.naslov {
+    font-weight: 400;
+    font-size: 50px;
+    font-style: normal;
+    color: #EF8D9C;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .root-box {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 600px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+  
+  .root-box .input-box {
+    position: relative;
+  }
+  
+  .root-box .input-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  
+  .root-box .input-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .root-box .input-box input:focus ~ label,
+  .root-box .input-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #EF8D9C;
+    font-size: 12px;
+  }
+  
+  .pinkText {
+    color: #EF8D9C;
+  }
+  
+  .natrag {
+    margin-left: 20px;
+    margin-right: 300px;
+  }
+  
+  .sastojciKategorijeParent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .sastojciKategorijeChild {
+    width: calc(33.33% - 10px);
+    box-sizing: border-box;
+  }

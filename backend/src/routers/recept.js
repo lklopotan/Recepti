@@ -25,9 +25,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        console.log(req.params.id);
         const recept = await Recept.findById(req.params.id);
-        console.log(recept);
         if (!recept) {
             return res.status(404).send('Recipe not found');
         }
@@ -41,13 +39,26 @@ router.delete('/:id', async (req, res) => {
             const recipe = await Recept.findByIdAndDelete(req.params.id);
             if (!recipe) {
                 return res.status(404).send('Recipe not found');
-                }
+            }
             res.send('Recipe deleted successfully');
-            
         });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
+    }
+  });
+
+
+  router.put('/:id', async (req, res) => {
+    try {
+      const recept = await Recept.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!recept) {
+        return res.status(404).send('Recept not found');
+      }
+      res.send(recept);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
     }
   });
 

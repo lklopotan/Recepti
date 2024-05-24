@@ -42,6 +42,6 @@ export class RecipesListComponent {
   }
 
   editRecept(recept: Recept) {
-    console.log(recept);
+    this._router.navigateByUrl("/recept/edit/" + recept._id, {state: recept});
   }
 }

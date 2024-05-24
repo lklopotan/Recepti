@@ -25,10 +25,18 @@ export class ReceptiService {
     return this._httpClient.post(`${this.baseUrl}/recepti`, recept);
   }
 
+  updateRecept(recept: Recept) {
+    return this._httpClient.put(`${this.baseUrl}/recepti/${recept._id}`, recept);
+  }
+
   saveReceptImage(image: File): Observable<ImageUploadResponse> {
     const formData = new FormData();
     formData.append('slika', image, image.name);
     return this._httpClient.post<ImageUploadResponse>(`${this.baseUrl}/images/upload`, formData);
+  }
+
+  deleteReceptImage(recept: Recept) {
+    return this._httpClient.delete<ImageUploadResponse>(`${this.baseUrl}/images/from-recept/${recept._id}`);
   }
 
   deleteRecept(receptId: string) {

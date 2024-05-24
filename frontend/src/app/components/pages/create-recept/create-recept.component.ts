@@ -30,7 +30,7 @@ export class CreateReceptComponent {
       Ocjena: ['', [Validators.required, Validators.min(1), Validators.max(5)]],
       Sastojci: ['', Validators.required],
       Upute: ['', Validators.required],
-      Savjet: ['', Validators.required],
+      Savjet: [''],
       Slika: ['']
     });
   }
@@ -57,7 +57,6 @@ export class CreateReceptComponent {
   }
 
   saveRecept(): void {
-    console.log(this.recipeForm);
     if (!this.image) {
       alert("Slika nedostaje!");
     } else if (!this.recipeForm.valid) {
@@ -66,10 +65,10 @@ export class CreateReceptComponent {
       this._receptiService.saveReceptImage(this.image).subscribe(imageResponse => {
         const recipeData = {
           ...this.recipeForm.value,
+          Sastojci: Array.isArray(this.recipeForm.value.Sastojci) ? this.recept.Sastojci : (this.recipeForm.value.Sastojci as string).split(',').map(item => item.trim()),
           SastojciKategorije: Object.keys(this.kategorijeSastojaka).filter(key => this.kategorijeSastojaka[key] === true),
           Slika: imageResponse.filename
         };
-        console.log(recipeData);
         this._receptiService.saveRecept(recipeData).subscribe(() => {
           alert("Novi recept uspješno spremljen!");
           this._router.navigateByUrl('/recepti');

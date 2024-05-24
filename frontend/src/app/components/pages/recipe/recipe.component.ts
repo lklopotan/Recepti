@@ -16,7 +16,6 @@ export class RecipeComponent {
 
   constructor(private _router: Router) {
     this.recept = this._router.getCurrentNavigation()?.extras.state as Recept;
-    console.log(this.recept);
   }
 
   navigateBack() {

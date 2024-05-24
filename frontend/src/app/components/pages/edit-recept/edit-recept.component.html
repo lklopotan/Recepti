@@ -1,1 +1,51 @@
-<p>edit-recept works!</p>
+<div class="root-box">
+    <h1 class="naslov">Ažuriraj recept</h1>
+    <form [formGroup]="recipeForm">
+        <div class="input-box">
+          <input type="text" name="Naziv" formControlName="Naziv">
+          <label>Naziv</label>
+        </div>
+        <div class="input-box">
+          <input type="text" name="Vrsta" formControlName="Vrsta">
+          <label>Vrsta</label>
+        </div>
+        <div class="input-box">
+          <input type="number" name="ZaOsoba" min="1" max="10" formControlName="ZaOsoba">
+          <label>Za osoba (1-10)</label>
+        </div>
+        <div class="input-box">
+          <input type="number" min="5" max="300" name="Vrijeme" formControlName="Vrijeme">
+          <label>Vrijeme u minutama (5-300)</label>
+        </div>
+        <div class="input-box">
+          <input type="number" min="1" max="5" name="Ocjena" formControlName="Ocjena">
+          <label>Ocjena (1-5)</label>
+        </div>
+        <p class="pinkText">Kategorije sastojaka: </p>
+        <div class="sastojciKategorijeParent">
+          <div class="sastojciKategorijeChild" *ngFor="let kategorija of kategorijeSastojaka | keyvalue">
+            <input type="checkbox" name="SastojciKategorije" [value]="kategorija.key" [checked]="kategorijeSastojaka[kategorija.key]" (change)="toggleCategory(kategorija.key)">
+            <label class="pinkText">{{ kategorija.key }}</label>
+          </div>
+        </div>
+        <br><br>
+        <div class="input-box">
+          <input type="text" name="Sastojci" formControlName="Sastojci">
+          <label>Sastojci (CSV)</label>
+        </div>
+        <div class="input-box">
+          <input type="text" name="Upute" formControlName="Upute">
+          <label>Upute</label>
+        </div>
+        <div class="input-box">
+          <input type="text" name="Savjet" formControlName="Savjet">
+          <label>Savjet</label>
+        </div>
+        <div class="input-box">
+          <input type="file" name="Slika" accept="image/*" [value]="recept.Slika" (change)="onChangeImage($event)">
+          <label>Slika</label>
+        </div>
+        <app-button class="natrag" (onClick)="navigateBack()" label="Odustani"></app-button>
+        <app-button class="backButton" (onClick)="saveRecept()" label="Spremi"></app-button>
+    </form>
+  </div>
