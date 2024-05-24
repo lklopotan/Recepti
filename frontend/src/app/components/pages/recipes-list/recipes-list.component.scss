@@ -87,6 +87,7 @@ img {
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   transition: box-shadow 1s;
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -121,4 +122,32 @@ img {
 
 .card_btn {
   justify-content: flex-end;
+}
+
+.trash_btn, .edit_btn {
+  position: absolute;
+  top: 20px;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  font-size: 30px;
+  cursor: pointer;
+  opacity: 0; /* Initially hide buttons */
+  transition: opacity 0.6s ease-in-out;
+}
+
+.trash_btn {
+  right: 20px;
+}
+
+.edit_btn {
+  left: 20px;
+}
+
+.card:hover .trash_btn {
+  opacity: 1; /* Show the trash button when hovering over the card */
+}
+
+.card:hover .edit_btn {
+  opacity: 1; /* Show the trash button when hovering over the card */
 }

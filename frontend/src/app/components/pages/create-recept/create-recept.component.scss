@@ -7,10 +7,19 @@ html {
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
   }
+
+  .naslov {
+    font-weight: 400;
+    font-size: 50px;
+    font-style: normal;
+    color: #EF8D9C;
+    text-align: center;
+    margin: 0;
+  }
   
   .login-box {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     width: 600px;
     padding: 40px;
@@ -102,4 +111,24 @@ html {
   .natrag {
     margin-left: 20px;
     margin-right: 300px;
+  }
+  
+  .sastojciKategorijeParent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .sastojciKategorijeChild {
+    width: calc(33.33% - 10px);
+    box-sizing: border-box;
+  }
+
+  .sastojciKategorijeChild input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sastojciKategorijeChild label {
+    display: inline;
   }

@@ -1,5 +1,4 @@
 <h1 class="naslov">Recepti</h1>
-
 <div class="newRecipe">Nešto nedostaje? <a routerLink="/create">Dodaj recept!</a></div>
 
 <div class="main">
@@ -7,12 +6,18 @@
     <ul class="cards">
       <li *ngFor="let recept of recepti" class="cards_item">
         <div class="card">
-          <div class="card_image"><img [src]="'/assets/images/' + recept.Slika"></div>
+          <button class="trash_btn" (click)="deleteRecept(recept)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+          <button class="edit_btn" (click)="editRecept(recept)">
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+          <div class="card_image"><img [src]="'http://localhost:3000/images/download/' + recept.Slika"></div>
           <div class="card_content">
             <h2 class="card_title">{{recept.Naziv}}</h2>
             <p class="card_text">{{recept.Vrijeme}} min | 
-                <ng-container *ngFor="let _ of [].constructor(recept.Ocjena)">★</ng-container>
-                <ng-container *ngFor="let _ of [].constructor(5-recept.Ocjena)">☆</ng-container>
+                <ng-container *ngFor="let _ of [].constructor(Math.floor(recept.Ocjena))">★</ng-container>
+                <ng-container *ngFor="let _ of [].constructor(Math.floor(5-recept.Ocjena))">☆</ng-container>
             </p>
             <button class="btn card_btn" (click)="openRecept(recept)">Pročitaj recept</button>
           </div>

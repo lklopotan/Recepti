@@ -1,47 +1,51 @@
 <div class="login-box">
-    <h2>Novi recept</h2>
-    <form #receptForm="ngForm">
+    <h1 class="naslov">Novi recept</h1>
+    <form [formGroup]="recipeForm">
         <div class="user-box">
-          <input type="text" name="Naziv" required="true" ngModel>
+          <input type="text" name="Naziv" formControlName="Naziv">
           <label>Naziv</label>
         </div>
         <div class="user-box">
-          <input type="text" name="Vrsta" required="true" ngModel>
+          <input type="text" name="Vrsta" formControlName="Vrsta">
           <label>Vrsta</label>
         </div>
         <div class="user-box">
-          <input type="number" name="zaOsoba" min="1" max="10" required="true" ngModel>
+          <input type="number" name="ZaOsoba" min="1" max="10" formControlName="ZaOsoba">
           <label>Za osoba (1-10)</label>
         </div>
         <div class="user-box">
-          <input type="number" min="5" max="300" name="vrijeme" required="true" ngModel>
+          <input type="number" min="5" max="300" name="Vrijeme" formControlName="Vrijeme">
           <label>Vrijeme u minutama (5-300)</label>
         </div>
         <div class="user-box">
-          <input type="number" min="1" max="5" name="ocjena" required="true" ngModel>
+          <input type="number" min="1" max="5" name="Ocjena" formControlName="Ocjena">
           <label>Ocjena (1-5)</label>
         </div>
+        <p>Kategorije sastojaka: </p>
+        <div class="sastojciKategorijeParent">
+          <div  class="sastojciKategorijeChild" *ngFor="let kategorija of kategorijeSastojaka | keyvalue">
+            <input type="checkbox" name="SastojciKategorije" [value]="kategorija.key" [checked]="kategorijeSastojaka[kategorija.key]" (change)="toggleCategory(kategorija.key)">
+            <label>{{ kategorija.key }}</label>
+          </div>
+        </div>
+        <br>
         <div class="user-box">
-          <input type="text" name="sastojciKategorije" required="true" ngModel>
-          <label>Kategorije sastojaka</label>
+          <input type="text" name="Sastojci" formControlName="Sastojci">
+          <label>Sastojci (CSV)</label>
         </div>
         <div class="user-box">
-          <input type="text" name="sastojci" required="true" ngModel>
-          <label>Sastojci</label>
-        </div>
-        <div class="user-box">
-          <input type="text" name="upute" required="true" ngModel>
+          <input type="text" name="Upute" formControlName="Upute">
           <label>Upute</label>
         </div>
         <div class="user-box">
-          <input type="text" name="savjet" required="true" ngModel>
+          <input type="text" name="Savjet" formControlName="Savjet">
           <label>Savjet</label>
         </div>
         <div class="user-box">
-          <input type="file" name="slika" accept="image/*" required="false" (change)="onChangeImage($event)" ngModel>
+          <input type="file" name="Slika" accept="image/*" (change)="onChangeImage($event)">
           <label>Slika</label>
         </div>
         <app-button class="natrag" (onClick)="navigateBack()" label="Odustani"></app-button>
-        <app-button class="backButton" (onClick)="saveRecept(receptForm.value)" label="Spremi"></app-button>
+        <app-button class="backButton" (onClick)="saveRecept()" label="Spremi"></app-button>
     </form>
   </div>

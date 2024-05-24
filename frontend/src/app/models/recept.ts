@@ -1,5 +1,5 @@
 export class Recept {
-    ID: string;
+    _id: string;
     Naziv: string;
     Vrsta: string;
     ZaOsoba: number;
