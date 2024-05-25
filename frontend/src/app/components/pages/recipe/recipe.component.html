@@ -38,7 +38,9 @@
         <h2>Savjet</h2>
         <p class="steps">{{recept.Savjet}}</p>
         </div>
-        <app-button class="natrag" (onClick)="navigateBack()" label="Natrag"></app-button>
-        <app-button (onClick)="editRecept(recept)" label="Izmijeni"></app-button>
+        <div class="block">
+            <app-button class="natrag" (onClick)="navigateBack()" label="Natrag"></app-button>
+            <app-button (onClick)="editRecept(recept)" label="Izmijeni"></app-button>
+        </div>
     </div>
 </div>

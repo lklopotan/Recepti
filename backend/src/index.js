@@ -1,5 +1,6 @@
 const express = require("express");
 const receptiRouter = require("./routers/recept");
+const receptiSearchRouter = require("./routers/search");
 const categoriesRouter = require("./routers/categories");
 const imagesRouter = require("./routers/images");
 require("./db/mongoose");
@@ -17,6 +18,7 @@ app.all('/*', (req, res, next) => {
 })
 
 app.use('/recepti', receptiRouter);
+app.use('/recepti/pretraga', receptiSearchRouter);
 app.use('/kategorije', categoriesRouter);
 app.use('/images', imagesRouter);
 
