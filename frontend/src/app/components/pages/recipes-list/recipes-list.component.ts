@@ -4,8 +4,8 @@ import { ReceptiService } from '../../../services/recepti.service';
 import { Router, RouterModule } from '@angular/router';
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { Recept } from '../../../models/recept';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-recipes-list',
@@ -37,11 +37,14 @@ export class RecipesListComponent {
   deleteRecept(recept: Recept) {
     this._receptiService.deleteRecept(recept._id).subscribe(() => {
       this.recepti = this.recepti.filter((item: Recept) => item._id !== recept._id);
-      console.log(this.recepti);
     })
   }
 
   editRecept(recept: Recept) {
     this._router.navigateByUrl("/recept/edit/" + recept._id, {state: recept});
+  }
+
+  updateRecipeList(list: any) {
+    this.recepti = list;
   }
 }

@@ -54,6 +54,18 @@
     box-shadow:0 0 4px #0d76be inset;
 }
 
+.pink {
+  color: #EF8D9C;
+}
+
+.searchBarButton {
+  border: 0;
+  background-color: transparent;
+  font-size: 20px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
 .searchform input::-webkit-input-placeholder {
 font-style: italic;
 line-height: 15px
@@ -62,4 +74,46 @@ line-height: 15px
 .searchform input:-moz-placeholder {
 font-style: italic;
 line-height: 15px
+}
+
+
+// Advanced search icon transition
+.nc-int-icon-rotate {
+  --animation-duration:0.4s;
+}
+
+.nc-int-icon {
+  position:relative;
+}
+
+#arrow-up {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(50% - 0.5em);
+  opacity: 0;
+}
+
+#arrow-down, #arrow-up {
+  transition: opacity 0s calc(var(--animation-duration)/2), transform var(--animation-duration); 
+  transform-origin: center center;
+}
+
+#arrow-up {
+  transform: rotate(90deg) scale(0.6);
+}
+
+#arrow-down {
+  opacity: 0;
+}
+
+#arrow-up {
+  opacity: 1;
+}
+
+#arrow-down {
+  transform: rotate(-90deg) scale(0.6);
+}
+
+#arrow-up {
+  transform: rotate(0);
 }

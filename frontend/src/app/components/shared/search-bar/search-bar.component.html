@@ -1,4 +1,22 @@
 <form class="searchform cf" [formGroup]="searchForm">
     <input formControlName="searchQuery" type="text" placeholder="Tražim nešto posebno...">
-    <app-button (onClick)="pretraga()" label="Pretraga"></app-button>
+    <button class="searchBarButton" (click)="pretraga()">
+        <fa-icon class="pink" [icon]="faSearch"></fa-icon>
+    </button>
+    <button class="searchBarButton" (click)="osvjeziListu()">
+        <fa-icon class="pink" [icon]="faArrowRotateRight"></fa-icon>
+    </button>
+    <button class="searchBarButton" (click)="prikaziNaprednuPretragu()">
+        <fa-icon [@animationStateArrowUp]="upArrowState" class="pink" [icon]="faArrowUpAZ"></fa-icon>
+        <fa-icon [@animationStateArrowDown]="downArrowState" class="pink" [icon]="faArrowDownAZ"></fa-icon>
+    </button>
+    <br>
+    <div [@animationStateSearchOptions]="searchOptionsState">
+        <label>Za osoba: </label>
+        <mat-slider min="1" max="5" discrete>
+            <input value="1" matSliderStartThumb formControlName="zaOsobaOd">
+            <input value="5" matSliderEndThumb formControlName="zaOsobaDo">
+        </mat-slider><br>
+        <app-button (onClick)="naprednaPretraga()" label="Pretraži"></app-button>
+    </div>
 </form>

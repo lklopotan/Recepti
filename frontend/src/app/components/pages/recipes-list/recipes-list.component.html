@@ -2,7 +2,7 @@
 <div class="newRecipe">Nešto nedostaje? <a routerLink="/create">Dodaj recept!</a></div>
 
 <div class="main">
-    <app-search-bar></app-search-bar>
+    <app-search-bar (recipeList)="updateRecipeList($event)"></app-search-bar>
     <ul class="cards">
       <li *ngFor="let recept of recepti" class="cards_item">
         <div class="card">
