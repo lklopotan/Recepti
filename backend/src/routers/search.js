@@ -21,4 +21,37 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.post('/napredna', async (req, res) => {
+    try {
+        const { textPretraga, ZaOsobaOd, ZaOsobaDo, SastojciKategorije } = req.body;
+
+        const query = {};
+
+        if (textPretraga) {
+            const textPretragaRegex = new RegExp(textPretraga, 'i');
+            query.$or = [
+                { Naziv: { $regex: textPretragaRegex } },
+                { Vrsta: { $regex: textPretragaRegex } },
+                { SastojciKategorije: { $regex: textPretragaRegex } },
+                { Sastojci: { $regex: textPretragaRegex } },
+                { Upute: { $regex: textPretragaRegex } },
+                { Savjet: { $regex: textPretragaRegex } }
+            ];
+        }
+
+        if (ZaOsobaOd !== undefined && ZaOsobaDo !== undefined) {
+            query.ZaOsoba = { $gte: ZaOsobaOd, $lte: ZaOsobaDo };
+        }
+
+        if (SastojciKategorije && SastojciKategorije.length > 0) {
+            query.SastojciKategorije = { $all: SastojciKategorije };
+        }
+
+        const results = await Recept.find(query);
+        res.status(200).send(results);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = router;

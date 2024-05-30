@@ -1,5 +1,5 @@
 <form class="searchform cf" [formGroup]="searchForm">
-    <input formControlName="searchQuery" type="text" placeholder="Tražim nešto posebno...">
+    <input formControlName="searchQuery" type="text" class="textBar" placeholder="Tražim nešto posebno...">
     <button class="searchBarButton" (click)="pretraga()">
         <fa-icon class="pink" [icon]="faSearch"></fa-icon>
     </button>
@@ -10,13 +10,21 @@
         <fa-icon [@animationStateArrowUp]="upArrowState" class="pink" [icon]="faArrowUpAZ"></fa-icon>
         <fa-icon [@animationStateArrowDown]="downArrowState" class="pink" [icon]="faArrowDownAZ"></fa-icon>
     </button>
-    <br>
-    <div [@animationStateSearchOptions]="searchOptionsState">
-        <label>Za osoba: </label>
-        <mat-slider min="1" max="5" discrete>
-            <input value="1" matSliderStartThumb formControlName="zaOsobaOd">
-            <input value="5" matSliderEndThumb formControlName="zaOsobaDo">
-        </mat-slider><br>
-        <app-button (onClick)="naprednaPretraga()" label="Pretraži"></app-button>
+    <div [@animationStateSearchOptions]="searchOptionsState" class="flex-container">
+        <p class="first-item flex-item searchOpcija">Kategorije sastojaka:</p>
+        <div class="sastojciKategorijeParent flex-item">
+            <div class="sastojciKategorijeChild" *ngFor="let kategorija of kategorijeSastojaka | keyvalue">
+              <input type="checkbox" style="width: auto;" name="SastojciKategorije" [value]="kategorija.key" [checked]="kategorijeSastojaka[kategorija.key]" (change)="toggleCategory(kategorija.key)">
+              <label class="pinkText">{{ kategorija.key }}</label>
+            </div>
+          </div>
+          <div class="flex-item">
+            <label class="searchOpcija space-right">Za osoba: </label>
+            <mat-slider min="1" max="10" discrete color="accent">
+                <input value="1" matSliderStartThumb formControlName="zaOsobaOd">
+                <input value="10" matSliderEndThumb formControlName="zaOsobaDo">
+            </mat-slider>
+          </div>
+        <app-button class="flex-item" (onClick)="naprednaPretraga()" label="Pretraži"></app-button>
     </div>
 </form>

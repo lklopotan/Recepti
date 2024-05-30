@@ -7,11 +7,12 @@ import { state, style, trigger } from '@angular/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSliderModule } from '@angular/material/slider';
 import { ReceptiService } from '../../../services/recepti.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, FontAwesomeModule, MatSliderModule],
+  imports: [ButtonComponent, ReactiveFormsModule, FontAwesomeModule, MatSliderModule, CommonModule],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss',
   animations: [
@@ -36,13 +37,14 @@ import { ReceptiService } from '../../../services/recepti.service';
           display: 'none'
       })),
       state('showAdvancedSearchOptions', style({
-          display: 'block'
+          display: 'flex'
       }))
     ])
   ]
 })
 export class SearchBarComponent {
   @Output() recipeList = new EventEmitter();
+  kategorijeSastojaka: { [key: string]: boolean } = {};
 
   searchForm: FormGroup;
   faArrowRotateRight = faArrowRotateRight;
@@ -57,9 +59,21 @@ export class SearchBarComponent {
   constructor(private _searchService: SearchService, private _receptiService: ReceptiService) {
     this.searchForm = new FormGroup({
       searchQuery: new FormControl(''),
-      zaOsobaOd: new FormControl('1'),
-      zaOsobaDo: new FormControl('5')
+      zaOsobaOd: new FormControl(1),
+      zaOsobaDo: new FormControl(10)
     });
+  }
+
+  ngOnInit(): void {
+    this._receptiService.getKategorije().subscribe(kategorijeSastojakaResponse => {
+      kategorijeSastojakaResponse.forEach(kategorija => {
+        this.kategorijeSastojaka[kategorija] = false;
+      });
+    });
+  }
+  
+  toggleCategory(kategorija: string): void {
+    this.kategorijeSastojaka[kategorija] = !this.kategorijeSastojaka[kategorija];
   }
 
   pretraga() { 
@@ -81,7 +95,13 @@ export class SearchBarComponent {
   }
 
   naprednaPretraga() {
-    console.log(this.searchForm.get('zaOsobaOd')?.value);
-    console.log(this.searchForm.get('zaOsobaDo')?.value);
+    const requestBody = {
+      ZaOsobaOd: this.searchForm.get('zaOsobaOd')?.value as string,
+      ZaOsobaDo: this.searchForm.get('zaOsobaDo')?.value as string,
+      SastojciKategorije: Object.keys(this.kategorijeSastojaka).filter(key => this.kategorijeSastojaka[key] === true)
+    };
+    this._searchService.naprednaPretraga(requestBody).subscribe(response => {
+      this.recipeList.emit(response);
+    })
   }
 }

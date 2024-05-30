@@ -40,11 +40,21 @@
   border-radius: 20px;
 }
 
+h1, h2 {
+  font-weight: normal;
+  color: #EF8D9C;
+  font-family: 'Kalam';
+  margin: 30px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
 h2 {
   font-size: 2em;
-  font-weight: normal;
-  color: hsl(14, 45%, 36%);
 }
+
 .preparation {
   width: 100%;
   max-height: auto;
