@@ -46,6 +46,10 @@ import { SearchBody } from '../../../models/search';
 export class SearchBarComponent {
   @Output() recipeList = new EventEmitter();
   kategorijeSastojaka: { [key: string]: boolean } = {};
+  zaOsobaToggle: boolean = true;
+  trajanjeToggle: boolean = true;
+  ocjenaToggle: boolean = true; 
+  pretragaToggle: boolean = true;
 
   searchForm: FormGroup;
   faArrowRotateRight = faArrowRotateRight;
@@ -81,6 +85,22 @@ export class SearchBarComponent {
     this.kategorijeSastojaka[kategorija] = !this.kategorijeSastojaka[kategorija];
   }
 
+  toggleZaOsoba() {
+    this.zaOsobaToggle = !this.zaOsobaToggle;
+  }
+
+  toggleTrajanje() {
+    this.trajanjeToggle = !this.trajanjeToggle;
+  }
+
+  toggleOcjena() {
+    this.ocjenaToggle = !this.ocjenaToggle;
+  }
+
+  togglePretraga() {
+    this.pretragaToggle = !this.pretragaToggle;
+  }
+
   pretraga() { 
     this._searchService.textSearch(this.searchForm.get('searchQuery')?.value).subscribe(result => {
       this.recipeList.emit(result);
@@ -101,12 +121,13 @@ export class SearchBarComponent {
 
   naprednaPretraga() {
     const requestBody: SearchBody = {
-      ZaOsobaOd: this.searchForm.get('zaOsobaOd')?.value as number,
-      ZaOsobaDo: this.searchForm.get('zaOsobaDo')?.value as number,
-      vrijemeOd: this.searchForm.get('vrijemeOd')?.value as number,
-      vrijemeDo: this.searchForm.get('vrijemeDo')?.value as number,
-      ocjenaOd: this.searchForm.get('ocjenaOd')?.value as number,
-      ocjenaDo: this.searchForm.get('ocjenaDo')?.value as number,
+      textPretraga: this.pretragaToggle ? this.searchForm.get('searchQuery')?.value as string : undefined,
+      ZaOsobaOd: this.zaOsobaToggle ? this.searchForm.get('zaOsobaOd')?.value as number : undefined,
+      ZaOsobaDo: this.zaOsobaToggle ? this.searchForm.get('zaOsobaDo')?.value as number : undefined,
+      vrijemeOd: this.trajanjeToggle ? this.searchForm.get('vrijemeOd')?.value as number : undefined,
+      vrijemeDo: this.trajanjeToggle ? this.searchForm.get('vrijemeDo')?.value as number : undefined,
+      ocjenaOd: this.ocjenaToggle ? this.searchForm.get('ocjenaOd')?.value as number : undefined,
+      ocjenaDo: this.ocjenaToggle ? this.searchForm.get('ocjenaDo')?.value as number : undefined,
       SastojciKategorije: Object.keys(this.kategorijeSastojaka).filter(key => this.kategorijeSastojaka[key] === true)
     };
     this._searchService.naprednaPretraga(requestBody).subscribe(response => {

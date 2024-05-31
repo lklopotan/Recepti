@@ -11,7 +11,7 @@ export class SearchService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  textSearch(searchText: string) {
+  textSearch(searchText: any) {
     const body = new SearchBody();
     body.textPretraga = searchText;
 

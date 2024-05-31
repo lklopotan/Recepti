@@ -1,8 +1,8 @@
 export class SearchBody {
     textPretraga?: string;
-    ZaOsobaOd: number;
-    ZaOsobaDo: number;
-    SastojciKategorije: string[];
+    ZaOsobaOd?: number;
+    ZaOsobaDo?: number;
+    SastojciKategorije?: string[];
 
     vrsta?: string;
     vrijemeOd?: number;

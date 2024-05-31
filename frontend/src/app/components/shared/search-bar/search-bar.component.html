@@ -20,25 +20,48 @@
           </div>
           <div class="flex-item">
             <label class="searchOpcija space-right">Za osoba: </label>
-            <mat-slider min="1" max="10" discrete color="accent">
+            <mat-slider class="space-right" min="1" max="10" [disabled]="!zaOsobaToggle" discrete color="accent">
                 <input value="1" matSliderStartThumb formControlName="zaOsobaOd">
                 <input value="10" matSliderEndThumb formControlName="zaOsobaDo">
             </mat-slider>
+            <label class="searchOpcija">Uključiti u pretragu? </label>
+            <div class="slider">
+              <input type="checkbox" value="None" id="zaOsoba" name="check" [checked]="zaOsobaToggle" (change)="toggleZaOsoba()" />
+              <label for="zaOsoba"></label>
+            </div>
           </div>
           <div class="flex-item">
             <label class="searchOpcija space-right">Trajanje: </label>
-            <mat-slider min="1" max="100" discrete color="accent">
+            <mat-slider class="space-right" min="1" max="100" [disabled]="!trajanjeToggle" color="accent">
                 <input value="1" matSliderStartThumb formControlName="vrijemeOd">
                 <input value="100" matSliderEndThumb formControlName="vrijemeDo">
             </mat-slider>
+            <label class="searchOpcija">Uključiti u pretragu? </label>
+            <div class="slider">
+              <input type="checkbox" value="None" id="trajanje" name="check" [checked]="trajanjeToggle" (change)="toggleTrajanje()" />
+              <label for="trajanje"></label>
+            </div>
           </div>
           <div class="flex-item">
             <label class="searchOpcija space-right">Ocjena: </label>
-            <mat-slider min="1" max="5" discrete color="accent">
+            <mat-slider class="space-right" min="1" max="5" discrete [disabled]="!ocjenaToggle" color="accent">
                 <input value="1" matSliderStartThumb formControlName="ocjenaOd">
                 <input value="5" matSliderEndThumb formControlName="ocjenaDo">
             </mat-slider>
+            <label class="searchOpcija">Uključiti u pretragu? </label>
+            <div class="slider">
+              <input type="checkbox" value="None" id="ocjena" name="check" [checked]="ocjenaToggle" (change)="toggleOcjena()" />
+              <label for="ocjena"></label>
+            </div>
           </div>
+          <div class="flex-item">
+            <label class="searchOpcija">Uključiti tekst iz tražilice u pretragu? </label>
+            <div class="slider">
+              <input type="checkbox" value="None" id="pretraga" name="check" [checked]="pretragaToggle" (change)="togglePretraga()" />
+              <label for="pretraga"></label>
+          </div>
+        </div>
+
         <app-button class="flex-item" (onClick)="naprednaPretraga()" label="Pretraži"></app-button>
     </div>
 </form>
