@@ -25,6 +25,20 @@
                 <input value="10" matSliderEndThumb formControlName="zaOsobaDo">
             </mat-slider>
           </div>
+          <div class="flex-item">
+            <label class="searchOpcija space-right">Trajanje: </label>
+            <mat-slider min="1" max="100" discrete color="accent">
+                <input value="1" matSliderStartThumb formControlName="vrijemeOd">
+                <input value="100" matSliderEndThumb formControlName="vrijemeDo">
+            </mat-slider>
+          </div>
+          <div class="flex-item">
+            <label class="searchOpcija space-right">Ocjena: </label>
+            <mat-slider min="1" max="5" discrete color="accent">
+                <input value="1" matSliderStartThumb formControlName="ocjenaOd">
+                <input value="5" matSliderEndThumb formControlName="ocjenaDo">
+            </mat-slider>
+          </div>
         <app-button class="flex-item" (onClick)="naprednaPretraga()" label="Pretraži"></app-button>
     </div>
 </form>

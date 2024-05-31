@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const receptSchema = new mongoose.Schema({
-    _id: Number,
+    ID: Number,
     Naziv: String,
     Vrsta: String, 
     ZaOsoba: Number, 

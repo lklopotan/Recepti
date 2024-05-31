@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
 router.post('/napredna', async (req, res) => {
     try {
-        const { textPretraga, ZaOsobaOd, ZaOsobaDo, SastojciKategorije } = req.body;
+        const { textPretraga, ZaOsobaOd, ZaOsobaDo, vrijemeOd, vrijemeDo, ocjenaOd, ocjenaDo, SastojciKategorije } = req.body;
 
         const query = {};
 
@@ -41,6 +41,14 @@ router.post('/napredna', async (req, res) => {
 
         if (ZaOsobaOd !== undefined && ZaOsobaDo !== undefined) {
             query.ZaOsoba = { $gte: ZaOsobaOd, $lte: ZaOsobaDo };
+        }
+
+        if (vrijemeOd !== undefined && vrijemeDo !== undefined) {
+            query.Vrijeme = { $gte: vrijemeOd, $lte: vrijemeDo };
+        }
+
+        if (ocjenaOd !== undefined && ocjenaDo !== undefined) {
+            query.Ocjena = { $gte: ocjenaOd, $lte: ocjenaDo };
         }
 
         if (SastojciKategorije && SastojciKategorije.length > 0) {

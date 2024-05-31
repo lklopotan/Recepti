@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSliderModule } from '@angular/material/slider';
 import { ReceptiService } from '../../../services/recepti.service';
 import { CommonModule } from '@angular/common';
+import { SearchBody } from '../../../models/search';
 
 @Component({
   selector: 'app-search-bar',
@@ -60,7 +61,11 @@ export class SearchBarComponent {
     this.searchForm = new FormGroup({
       searchQuery: new FormControl(''),
       zaOsobaOd: new FormControl(1),
-      zaOsobaDo: new FormControl(10)
+      zaOsobaDo: new FormControl(10),
+      vrijemeOd: new FormControl(1),
+      vrijemeDo: new FormControl(100),
+      ocjenaOd: new FormControl(1),
+      ocjenaDo: new FormControl(5),
     });
   }
 
@@ -95,9 +100,13 @@ export class SearchBarComponent {
   }
 
   naprednaPretraga() {
-    const requestBody = {
-      ZaOsobaOd: this.searchForm.get('zaOsobaOd')?.value as string,
-      ZaOsobaDo: this.searchForm.get('zaOsobaDo')?.value as string,
+    const requestBody: SearchBody = {
+      ZaOsobaOd: this.searchForm.get('zaOsobaOd')?.value as number,
+      ZaOsobaDo: this.searchForm.get('zaOsobaDo')?.value as number,
+      vrijemeOd: this.searchForm.get('vrijemeOd')?.value as number,
+      vrijemeDo: this.searchForm.get('vrijemeDo')?.value as number,
+      ocjenaOd: this.searchForm.get('ocjenaOd')?.value as number,
+      ocjenaDo: this.searchForm.get('ocjenaDo')?.value as number,
       SastojciKategorije: Object.keys(this.kategorijeSastojaka).filter(key => this.kategorijeSastojaka[key] === true)
     };
     this._searchService.naprednaPretraga(requestBody).subscribe(response => {

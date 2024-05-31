@@ -18,7 +18,7 @@ export class SearchService {
     return this._httpClient.post(`${this.baseUrl}/recepti/pretraga`, body);
   }
 
-  naprednaPretraga(requestBody: any) {
+  naprednaPretraga(requestBody: SearchBody) {
     return this._httpClient.post(`${this.baseUrl}/recepti/pretraga/napredna`, requestBody);
   }
 }
