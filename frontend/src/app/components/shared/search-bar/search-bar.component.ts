@@ -51,6 +51,7 @@ export class SearchBarComponent {
   ocjenaToggle: boolean = true; 
   pretragaToggle: boolean = true;
 
+
   searchForm: FormGroup;
   faArrowRotateRight = faArrowRotateRight;
   faSearch = faSearch;
@@ -110,6 +111,13 @@ export class SearchBarComponent {
   osvjeziListu() {
     this._receptiService.getRecepti().subscribe(recepti => {
       this.recipeList.emit(recepti);
+    })
+  }
+
+  predloziRecept() {
+      this._searchService.receptPrijedlog().subscribe(result => {
+      this.recipeList.emit(result);
+      console.log(result); 
     })
   }
 

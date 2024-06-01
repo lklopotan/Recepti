@@ -21,6 +21,19 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.get('/predlozi', async (req, res) => {
+    try {
+        const predlozeno = await Recept.find({ 
+            Ocjena: {$gte: 4}, 
+            Vrijeme: { $lte: 40 } 
+        });
+        res.status(200).send(predlozeno);
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+    }
+})
+
 router.post('/napredna', async (req, res) => {
     try {
         const { textPretraga, ZaOsobaOd, ZaOsobaDo, vrijemeOd, vrijemeDo, ocjenaOd, ocjenaDo, SastojciKategorije } = req.body;

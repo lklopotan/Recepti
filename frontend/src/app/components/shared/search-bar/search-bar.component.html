@@ -10,6 +10,10 @@
         <fa-icon [@animationStateArrowUp]="upArrowState" class="pink" [icon]="faArrowUpAZ"></fa-icon>
         <fa-icon [@animationStateArrowDown]="downArrowState" class="pink" [icon]="faArrowDownAZ"></fa-icon>
     </button>
+    <div class="flex-item">
+      <label class="searchOpcija">Predloži mi recept? </label>
+    <app-button class="flex-item" (onClick)="predloziRecept()" label="Predloži"></app-button>
+  </div>
     <div [@animationStateSearchOptions]="searchOptionsState" class="flex-container">
         <p class="first-item flex-item searchOpcija">Kategorije sastojaka:</p>
         <div class="sastojciKategorijeParent flex-item">

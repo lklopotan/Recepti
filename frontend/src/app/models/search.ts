@@ -3,7 +3,6 @@ export class SearchBody {
     ZaOsobaOd?: number;
     ZaOsobaDo?: number;
     SastojciKategorije?: string[];
-
     vrsta?: string;
     vrijemeOd?: number;
     vrijemeDo?: number;
